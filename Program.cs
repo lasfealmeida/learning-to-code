@@ -4,7 +4,7 @@ using System.Diagnostics;
 // ==============================
 // 1. String interpolation
 // ==============================
-string name = "Alex";
+string name = "Igor";
 int age = 25;
 Console.WriteLine($"Hi {name}, you are {age}. Next year you'll be {age + 1}.");
 
@@ -117,4 +117,42 @@ var shapes = new List<IShape>
 foreach (var shape in shapes)
 {
     Console.WriteLine($"{shape.Name}: area = {shape.Area():F2}");
+}
+
+record Point(int X, int Y);
+
+enum Day
+{
+    Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+}
+
+class Box
+{
+    public string? Item { get; set; }
+}
+
+interface IShape
+{
+    string Name { get; }
+    double Area();
+}
+
+class Circle : IShape
+{
+    public double Radius { get; }
+
+    public Circle(double radius) => Radius = radius;
+
+    public string Name => "Circle";
+    public double Area() => Math.PI * Radius * Radius;
+}
+
+class Square : IShape
+{
+    public double Side { get; }
+
+    public Square(double side) => Side = side;
+
+    public string Name => "Square";
+    public double Area() => Side * Side;
 }
